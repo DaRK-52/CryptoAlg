@@ -1,0 +1,3 @@
+*.r1cs
+*.json
+**/node_modules
