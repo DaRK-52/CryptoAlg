@@ -11,5 +11,3 @@ template Relu() {
     lt.in[1] <== x;
     out <== x * lt.out;
 }
-
-component main = Relu();

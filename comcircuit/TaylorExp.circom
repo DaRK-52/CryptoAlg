@@ -1,17 +1,5 @@
 pragma circom  2.1.6;
-
-// template used to calculate sum of x[N]
-template Sum(N) {
-    signal input x[N];
-    signal output sum;
-    var temp = 0;
-
-    for (var i = 0;i < N;i++) {
-        temp += x[i];
-    }
-
-    sum <== temp;
-}
+include "./Utils.circom"
 
 // template used to calculate function's 
 // taylor expansion of order n
@@ -29,9 +17,7 @@ template TaylorExp(N) {
         polyTerm[i] <== powerOfX[i] * c[i];
     }
     component sum = Sum(N);
-    sum.x <== polyTerm;
+    sum.in <== polyTerm;
 
-    result <== sum.sum;
+    result <== sum.out;
 }
-
-component main = TaylorExp(5);
